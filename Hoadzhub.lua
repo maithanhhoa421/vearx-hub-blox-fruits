@@ -1,5 +1,5 @@
 
-shared.LoaderTitle = "Bản script đang được sử dụng thử made by hoaz";
+shared.LoaderTitle = "VEARX HUB IS LOADING";
 shared.LoaderKeyFrames = {
     [1] = {
         1,
@@ -311,8 +311,8 @@ v5:Destroy();
 -- end);
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
 local v15 = v14:CreateWindow({
-    Title = "Hoadz Hub Blox Fruits [ Test ]",
-    SubTitle = "Blox Fruit",
+    Title = "Vearx Hub [ Test ]",
+    SubTitle = "by Hoazn",
     TabWidth = 160,
     Theme = "Dark",
     Acrylic = false,
@@ -321,49 +321,49 @@ local v15 = v14:CreateWindow({
 });
 local v16 = {
     Home = v15:AddTab({
-        Title = "Thông Tin"
+        Title = "Information"
     }),
     Main = v15:AddTab({
-        Title = "Cày"
+        Title = "Tab Farming"
     }),
     Sea = v15:AddTab({
-        Title = "Sự Kiện"
+        Title = "Tab Event"
     }),
     ITM = v15:AddTab({
-        Title = "Vật Phẩm"
+        Title = "Tab Items"
     }),
     Setting = v15:AddTab({
-        Title = "Cài Đặt"
+        Title = "Setting"
     }),
     Status = v15:AddTab({
-        Title = "Máy Chủ"
+        Title = "Sever"
     }),
     Stats = v15:AddTab({
-        Title = "Chỉ Số"
+        Title = "Stat"
     }),
     Player = v15:AddTab({
-        Title = "Người Chơi"
+        Title = "Tab Player"
     }),
     Teleport = v15:AddTab({
-        Title = "Dịch Chuyển"
+        Title = "Tab Dịch Chuyển"
     }),
     Visual = v15:AddTab({
-        Title = "Giả"
+        Title = "Tab Fake"
     }),
     Fruit = v15:AddTab({
-        Title = "Trái"
+        Title = "Tab Fruits"
     }),
     Raid = v15:AddTab({
-        Title = "Tập Kích"
+        Title = "Tab Raid"
     }),
     Race = v15:AddTab({
-        Title = "Tộc"
+        Title = "Race"
     }),
     Shop = v15:AddTab({
-        Title = "Cửa Hàng"
+        Title = "Shop"
     }),
     Misc = v15:AddTab({
-        Title = "Khác"
+        Title = "Different"
     })
 };
 local v17 = v14.Options;
@@ -2694,8 +2694,8 @@ spawn(function()
     end
 end);
 local v48 = v16.Main:AddDropdown("DropdownSelectWeapon", {
-    Title = "Vũ Khí",
-    Description = "",
+    Title = "Weapons",
+    Description = "Dùng để chọn vũ khí để fram",
     Values = {
         "Melee",
         "Sword",
@@ -2724,23 +2724,7 @@ task.spawn(function()
                     if (v1029.ToolTip == "Sword") then
                         if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v1029.Name)) then
                             SelectWeapon = v1029.Name;
-                        end
-                    end
-                end
-            elseif (ChooseWeapon == "Blox Fruit") then
-                for v1430, v1431 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    if (v1431.ToolTip == "Blox Fruit") then
-                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v1431.Name)) then
-                            SelectWeapon = v1431.Name;
-                        end
-                    end
-                end
-            end
-        end);
-    end
-end);
-local v49 = v16.Main:AddToggle("ToggleLevel", {
-    Title = "Cày Cấp",
+                Farm",
     Description = "",
     Default = false
 });
@@ -2779,75 +2763,7 @@ spawn(function()
                                     v1433.HumanoidRootPart.Transparency = 1;
                                     v1433.Humanoid.JumpPower = 0;
                                     v1433.Humanoid.WalkSpeed = 0;
-                                    v1433.HumanoidRootPart.CanCollide = false;
-                                    FarmPos = v1433.HumanoidRootPart.CFrame;
-                                    MonFarm = v1433.Name;
-                                until not _G.AutoLevel or not v1433.Parent or (v1433.Humanoid.Health <= 0) or not game:GetService("Workspace").Enemies:FindFirstChild(v1433.Name) or (game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false)
-                                bringmob = false;
-                            end
-                        end
-                    end
-                    for v1434, v1435 in pairs(game:GetService("Workspace")['_WorldOrigin'].EnemySpawns:GetChildren()) do
-                        if string.find(v1435.Name, NameMon) then
-                            if ((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v1435.Position).Magnitude >= 10) then
-                                Tween(v1435.HumanoidRootPart.CFrame * Pos);
-                            end
-                        end
-                    end
-                end
-            end);
-        end
-    end
-end);
-local v50 = v16.Main:AddToggle("ToggleMobAura", {
-    Title = "Đấm Quái Gần",
-    Description = "",
-    Default = false
-});
-v50:OnChanged(function(v238)
-    _G.AutoNear = v238;
-    if (v238 == false) then
-        wait();
-        Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
-        wait();
-    end
-end);
-v17.ToggleMobAura:SetValue(false);
-spawn(function()
-    while wait() do
-        if _G.AutoNear then
-            pcall(function()
-                for v838, v839 in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if (v839:FindFirstChild("Humanoid") and v839:FindFirstChild("HumanoidRootPart") and (v839.Humanoid.Health > 0)) then
-                        if v839.Name then
-                            if ((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v839:FindFirstChild("HumanoidRootPart").Position).Magnitude <= 5000) then
-                                repeat
-                                    wait(_G.Fast_Delay);
-                                    AttackNoCoolDown();
-                                    bringmob = true;
-                                    AutoHaki();
-                                    EquipTool(SelectWeapon);
-                                    Tween(v839.HumanoidRootPart.CFrame * Pos);
-                                    v839.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
-                                    v839.HumanoidRootPart.Transparency = 1;
-                                    v839.Humanoid.JumpPower = 0;
-                                    v839.Humanoid.WalkSpeed = 0;
-                                    v839.HumanoidRootPart.CanCollide = false;
-                                    FarmPos = v839.HumanoidRootPart.CFrame;
-                                    MonFarm = v839.Name;
-                                until not _G.AutoNear or not v839.Parent or (v839.Humanoid.Health <= 0) or not game.Workspace.Enemies:FindFirstChild(v839.Name)
-                                bringmob = false;
-                            end
-                        end
-                    end
-                end
-            end);
-        end
-    end
-end);
-local v51 = v16.Main:AddToggle("ToggleCastleRaid", {
-    Title = "Đấm Hải Tặc",
-    Description = "",
+                                    v1433.HumanoidRtặc",
     Default = false
 });
 v51:OnChanged(function(v239)
@@ -2883,8 +2799,8 @@ spawn(function()
     end
 end);
 local v52 = v16.Main:AddToggle("ToggleHakiFortress", {
-    Title = "Bật Haki Màu Pháo Đài",
-    Description = "",
+    Title = "Active Haki Colour",
+    Description = "Dùng để kích hoạt 3 màu haki ở pháo đài",
     Default = false
 });
 v52:OnChanged(function(v240)
@@ -2934,8 +2850,8 @@ spawn(function()
     end
 end);
 local v55 = v16.Main:AddToggle("ToggleCollectChest", {
-    Title = "Lụm Rương",
-    Description = "",
+    Title = "Farm Chest",
+    Description = "Dùng để fram rương ( no bypass )",
     Default = false
 });
 v55:OnChanged(function(v248)
@@ -2966,10 +2882,10 @@ spawn(function()
         end
     end
 end);
-local v56 = v16.Main:AddSection("Thông Thạo");
+local v56 = v16.Main:AddSection("Farm ");
 local v57 = v16.Main:AddDropdown("DropdownMastery", {
-    Title = "Cày Thông Thạo",
-    Description = "",
+    Title = "Farm Matery",
+    Description = "Dùng để cày thông thạo các vũ khí",
     Values = {
         "Near Mobs"
     },
